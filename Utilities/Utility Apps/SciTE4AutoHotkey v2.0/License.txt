@@ -1,0 +1,34 @@
+License for Scintilla and SciTE
+===============================
+
+Copyright 1998-2009 by Neil Hodgson <neilh@scintilla.org>
+
+All Rights Reserved
+
+Permission to use, copy, modify, and distribute this software and its
+documentation for any purpose and without fee is hereby granted,
+provided that the above copyright notice appear in all copies and that
+both that copyright notice and this permission notice appear in
+supporting documentation.
+
+NEIL HODGSON DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS
+SOFTWARE, INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+AND FITNESS, IN NO EVENT SHALL NEIL HODGSON BE LIABLE FOR ANY
+SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS,
+WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER
+TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE
+OR PERFORMANCE OF THIS SOFTWARE.
+
+License for the edits done to Scintilla and SciTE
+=================================================
+
+You may use, copy, modify and distribute this software (compiled form) and
+its documentation for any purpose and without fee, but you have
+to include *this* copyright file and claim you don't own this software
+(that means, put "SciTE4AutoHotkey v2 made by fincs" or similar
+anywhere on your source code and if distributed in executable form,
+adding it to the documentation is enough).
+
+As for the source code (everything but the SciTE and Scintilla code),
+it's on the WTFPL (http://sam.zoy.org/wtfpl/).

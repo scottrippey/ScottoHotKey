@@ -1,0 +1,6 @@
+"Integration" tips
+-------------------
+
+AutoHotKey can "see" the text inside a window -- so programs like ACT and PeachTree can be very quickly and easily "read" just as long as you use Window Spy or "Form Filler Helper" to get the names of the controls.  However, some programs, like FireFox, cannot be "read".  To get the info from osCommerce, I send keyboard shortcuts to copy everything to the clipboard, and then "Screen Scrape" the information out.
+
+To quickly and easily get a list of the names of controls, open "AutoHotKey\Utilities\Form Filler Helper" and follow the directions there.  This will allow you to quickly create and name a list of controls, so that the "Form Filler" script (in the "#Includes" folder) can be used to import and export data from other programs.

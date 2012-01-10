@@ -1,0 +1,64 @@
+Order Helper by Scott Rippey
+
+Programming Guide:
+------------------
+
+Required Files and Folders:
+---------------------------
+AutoHotKey\Start Up\Work\Order Helper\*.*
+AutoHotKey\Start up\#Includes\*.*
+
+Intro
+------------------
+The Order Helper program is an AutoHotKey script that is distributed over a number of files and folders.
+To run or compile the script, use AutoHotKey to open "Order Helper Compiler.exclude.ahk".
+If you add or remove any files from the program, you will need to reopen "Order Helper Compiler.exclude.ahk".
+
+
+
+
+
+
+
+The script is split into several directories: Data, GUI, Integration, and Misc
+
+
+The "Data" folder
+-------------------
+Contains files of data, such as a list of products, peachtree accounts, sales reps, etc... and code for using that data.
+If you want to edit any of these data files, you should pay close attention to the format of the data, because the text is usually in a very specific format.
+
+
+The "GUI" folder
+--------------------
+This contains all the GUI elements and all logic for updating the GUI.  
+"Orders GUI 1.ahk" contains all the GUI elements, and layout, and pre-processing and post-processing.
+"Orders GUI 2.ahk" contains all the GUI code, such as credit card validation and automatic text advancing.
+
+
+The "Integration" folder
+-------------------------
+This folder contains all code for integrating between the Order Helper and other applications.  
+This includes www.griffinlab.com (osCommerce), Virtual Merchant, Peachtree, and ACT!.
+
+The "Standalone Project Files (exclude)" folder
+----------------------------------------------
+The only reason this is here is to allow compatibility between the Order Helper and another application I developed, "ClipboardQueue".  Normally, Order Helper is part of my "Main Script" that uses the ClipboardQueue, but if the Order Helper needs to be compiled on its own, it needs these files.
+
+
+The "Misc" folder
+-------------------------
+The rest of the files go here.  Currently there is only the Ctrl+R Reload function.
+
+
+
+
+
+
+
+Programming Tips
+---------------------
+All the values on an order window are stored globally.  Therefore, there should not be more than 1 Order Helper window at a time.  If you decide to have 2 windows, do so at your own risk.  Whichever window hits "Apply" last will affect Import/Export operations, and if a window is closed, it will probably be cleared.
+
+
+

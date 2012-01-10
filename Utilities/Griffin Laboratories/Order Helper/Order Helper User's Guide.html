@@ -1,0 +1,265 @@
+﻿<html xmlns:v="urn:schemas-microsoft-com:vml" 
+xmlns:o="urn:schemas-microsoft-com:office:office">
+
+<head>
+<title>Order Helper User's Guide</title>
+<style type="text/css">
+* {	margin: 0; padding: 0; }
+p { margin-bottom: 1em; text-indent:1em;}
+.screenshot { margin-left: 10em; }
+</style>
+</head>
+
+<body>
+
+<h1>Order Helper by Scott Rippey - <span class="a">User&#39;s Guide</span></h1>
+<p>&nbsp;</p>
+<h2>Quick Start Guide</h2>
+<h3>Starting the program</h3>
+<p>Order Helper is a portable, stand-alone exe file. Double-click the file to 
+get started.&nbsp; The program will open in the background, and you will see a 
+small green &quot;H&quot; icon in your task tray (next to the clock).&nbsp; The program 
+will continue running in the background; to exit the program, right-click the 
+green icon and choose <strong>Exit</strong>.</p>
+<p>To bring up the Order Helper window, hold down the <strong>Windows Key
+</strong>and press <strong>O</strong>.&nbsp; I will refer to this shortcut as
+<strong>Win+O</strong> from now on.</p>
+<h3>Processing a Web Order</h3>
+<p>To process a web order, you must first open the web order in <strong>Firefox</strong>.&nbsp; 
+Internet Explorer is not currently supported.&nbsp; Open the web order (<a 
+href="https://www.griffinlab.com/catalog/admin/orders.php">https://www.griffinlab.com/catalog/admin/orders.php</a>) 
+and change the<strong> Order Status</strong> to<strong> Processing. </strong>Now
+<strong>Print </strong>the order.</p>
+<p>Bring up the Order Helper window (shortcut: <strong>Win+O</strong>), and 
+press the <strong>Web Order =&gt;</strong> button to import 
+all the data from the web order.</p>
+<p>Order Helper will now prompt you for the &quot;Middle Digits&quot; of the credit card.&nbsp; 
+You must login to Yahoo Mail to obtain these digits (<a 
+href="http://mail.yahoo.com">http://mail.yahoo.com</a> ).&nbsp; Type the 8 
+middle digits into the prompt, or just copy them to the clipboard.</p>
+<p>Now, the order window will appear, with as much information filled out as 
+possible.&nbsp; Double-check all the order information.&nbsp; Be sure to click
+<strong>Apply</strong> if you make any changes!</p>
+<h3>Charging the Credit Card with VirtualMerchant</h3>
+<p>The next step is to charge the credit card.&nbsp; If the <strong>Billing 
+Address</strong> is not in the US, Order Helper will have a few different steps.&nbsp; 
+Please read the <a href="#InternationalInstructions">International Customer Instructions</a> instead.</p>
+<p>Open Virtual Merchant ( <a href="http://www.virtualmerchant.com">
+http://www.virtualmerchant.com</a> ) and login.&nbsp; On the left, click <strong>
+Credit Card </strong>then click<strong> Sale.</strong></p>
+<p>The box labeled <strong>Card Account Data</strong> should have a blinking 
+cursor (if not, click it).&nbsp; In the Order Helper window, click <strong>&lt;= 
+Virtual Merchant</strong> to automatically type out the credit card number.&nbsp; 
+Click <strong>Submit</strong>.</p>
+<p>Now Virtual Merchant should display a list of fields to fill out.&nbsp; Make 
+sure the first box, <strong>Expiration Date</strong>, is selected.&nbsp; In the 
+Order Helper window, click <strong>&lt;= Virtual Merchant</strong> again.</p>
+<p>You will now see a prompt that asks &quot;<strong>Do I need to paste the Customer 
+Code and Sales Tax?</strong>&quot;&nbsp; Take a look at the Virtual Merchant window.&nbsp; 
+Right above the Description field, there will be both &quot;<strong>Customer Code:</strong>&quot; 
+and &quot;<strong>Sales Tax:</strong>&quot;, or just &quot;<strong>Sales Tax:</strong>&quot;, or 
+neither, depending on the credit card account.</p>
+
+<div class="screenshot">
+Example:
+<table cellspacing="0">
+	<tr>
+		<td width="180px">Account Data:</td>
+		<td><input name="ssl_account_data" size="19" maxlength="19" 
+		value="41**********1111" readonly="readonly" class="displaytext" 
+		type="text"> </td>
+	</tr>
+	<tr>
+		<td class="required" width="180px">Expiration Date(MMYY):</td>
+		<td><input name="ssl_exp_date" size="4" maxlength="4" value="" 
+		type="text">
+		<img src="https://www.myvirtualmerchant.com/VirtualMerchant/images/required.gif">
+		</td>
+	</tr>
+	<input name="hdnfld_actual_amount" value="" type="hidden">
+	<tr>
+		<td class="required" width="180px">Amount:</td>
+		<td><input name="ssl_amount" size="13" maxlength="13" value="" 
+		onblur="calcCardHolderAmount()" type="text">
+		<img src="https://www.myvirtualmerchant.com/VirtualMerchant/images/required.gif">
+		</td>
+	</tr>
+	<tr>
+		<td class="required" width="180px">CVV2 Indicator:</td>
+		<td><select name="ssl_cvv2cvc2_indicator" onchange="checkCvc()">
+		<option value="0">Bypassed</option>
+		<option value="1" selected="selected">Present</option>
+		<option value="2">Illegible</option>
+		<option value="9">Not Present</option>
+		</select>
+		<img src="https://www.myvirtualmerchant.com/VirtualMerchant/images/required.gif">
+		</td>
+	</tr>
+	<tr>
+		<td width="180px">CVV2:</td>
+		<td><input name="ssl_cvv2cvc2" size="4" maxlength="4" value="" 
+		type="text"> </td>
+	</tr>
+	<tr>
+	<td style="color:red;"><strong>Customer Code:</strong></td><td><input name="custcode" size="10" type="text" 
+	></td></tr>
+	<tr>
+		<td class="required" style="color:red;" width="180px"><strong>Sales Tax:</strong></td>
+		<td><input name="ssl_salestax" size="10" maxlength="10" value="" 
+		type="text">
+		<img src="https://www.myvirtualmerchant.com/VirtualMerchant/images/required.gif">
+		</td>
+	</tr>
+	<tr>
+		<td width="180px">Description:</td>
+		<td><input name="ssl_description" size="30" maxlength="255" value="" 
+		type="text"> </td>
+	</tr>
+</table>
+<table class="minorbox" cellspacing="0">
+	<tr class="header">
+		<td width="180px">Billing Address<br>
+		............</td>
+	</tr>
+</table>
+</div>
+
+<p>Obviously, if you see both fields, choose <strong>Both</strong>, or if you just 
+see Sales Tax, choose <strong>Sales Tax,</strong> or else choose <strong>None.</strong></p>
+<p>Once you make your selection, the fields will be automatically filled.&nbsp; 
+Double-check that the <strong>Amount </strong>is correct. Scroll to the bottom 
+and click <strong>Process</strong>.</p>
+<p>Assuming the card is approved, a new window will pop-up with the Credit Card 
+Receipt.&nbsp; Hit OK to print it.</p>
+<p>On the Credit Card Receipt printout, write down the type of card (Visa, MC, 
+Amex, Disc), the Web 
+Order #, and sign it with your initials.</p>
+<h3>&nbsp;</h3>
+<h3>Putting Customer Information into PeachTree</h3>
+<p>Putting information into Peachtree is a two-step process.&nbsp; First, you 
+have to create a new customer.&nbsp; Second, you have to create a sales order.</p>
+<p>Open PeachTree, login, and click <strong>Customers</strong> -&gt; <strong>New 
+Customer.
+</strong></p>
+<p>In the Order Helper, click <strong>&lt;= PeachTree</strong> to automatically 
+enter the customer&#39;s name into the CustomerID field.</p>
+<p>Check to see if the customer already exists in the database. If the customer 
+does already exist, double-check that the address 
+matches the Order Helper address. Then, close this window and continue to the 
+next step, <strong>Creating a Sales Order in PeachTree</strong>.</p>
+<p>If the customer does not exist, then click <strong>&lt;= PeachTree</strong> 
+again.&nbsp; This will auto-type the customer&#39;s information.&nbsp; Click <strong>
+Save</strong> and close the window.</p>
+<h3>Creating a Sales Order in PeachTree</h3>
+<p>In PeachTree, click <strong>Sales Orders -&gt; New Sales Order</strong>.&nbsp; </p>
+<p>In the Order Helper, click <strong>&lt;= PeachTree</strong> again.&nbsp; This 
+will fill in the CustomerID.&nbsp; Make sure the correct CustomerID is selected.</p>
+<p>In the Order Helper, click <strong>&lt;= PeachTree</strong> one last time.&nbsp; 
+This will start filling out the entire sales order.&nbsp; This process might 
+take a short while; just wait for it to finish.</p>
+<p>Double-check ALL information, including Shipping Method and the Order Total, 
+to see if they match the original order.&nbsp; If they do, click the <strong>
+Print</strong> button, make sure <strong>Sales Order Picking List</strong> is 
+the selected form, and click <strong>Print</strong>.</p>
+<h3>Finishing Up</h3>
+<p>To finish the Web Order, you should staple all 3 printouts:&nbsp; the Sales 
+Order Picking List, the Web Order, and the Credit Card Receipt (in that order).&nbsp; 
+The Sales Order now goes into the production room.&nbsp; You are now finished 
+with the Web Order.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2>Other Tasks</h2>
+<h3>Importing and Exporting Customer Information into ACT!</h3>
+<p>To export or import customer information between ACT! and Order Helper, first 
+make sure ACT! is open and has the customer info displayed.</p>
+<p>To export the Order Helper information into ACT!, you must first check if the 
+contact exists.&nbsp; Click <strong>Lookup -&gt; Last Name... </strong>&nbsp;and 
+search for the customer&#39;s last name.&nbsp; The shortcut for this is <strong>
+Win+F.&nbsp; </strong>If the customer already exists, you should double-check 
+the information, and then you are done.<br>
+If the customer does not already exist, create a new ACT! contact by clicking
+<strong>Contacts -&gt; New Contact</strong>.&nbsp; Then, in the Order Helper, click
+<strong>&lt;= ACT!</strong> to fill in all the fields.&nbsp; Click <strong>Save</strong>.</p>
+<p>To import the customer information from ACT! into Order Helper, bring up a 
+customer in ACT!.&nbsp; Open a new Order Helper window (<strong>Win+O</strong>), 
+and click <strong>ACT! =&gt;</strong> to import all data.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2>Shortcuts</h2>
+<p>A good number of shortcuts exist for making order processing faster and 
+easier.</p>
+<p>To fix capitalization errors:<br>
+If a <strong>Company</strong>, <strong>Name</strong>, <strong>Address</strong>,
+<strong>City</strong>, or <strong>Country </strong>has capitalization errors, 
+click the corresponding label to fix the errors.&nbsp; For example, if the
+<strong>Name</strong> was joHN smiTH, then click the <strong>Name</strong> 
+label 
+and the text will change to John Smith.&nbsp; Click it again to undo.</p>
+<p>If the <strong>Description</strong> field is blank, click the <strong>
+Description</strong> label to insert 
+a description based off the customer&#39;s last name and the date.&nbsp; This is 
+useful for phone orders.</p>
+<h3>Keyboard Shortcuts</h3>
+<table>
+	<tr>
+		<td><strong>Shortcut:</strong></td>
+		<td><strong>Name:</strong></td>
+		<td><strong>Applies to the following windows:</strong></td>
+		<td><strong>Action:</strong></td>
+	</tr>
+	<tr>
+		<td><strong>Win+C</strong></td>
+		<td>Copy Info</td>
+		<td>ACT Customer Info, PeachTree Customer Info, Web Orders</td>
+		<td>Imports all data into a new Order Helper window.&nbsp; Same thing as 
+		hitting <strong>Web Order =&gt;</strong>, <strong>ACT! =&gt;</strong>, or
+		<strong>PeachTree =&gt;.</strong></td>
+	</tr>
+	<tr>
+		<td><strong>Win+V</strong></td>
+		<td>Paste Info</td>
+		<td>ACT Customer Info, PeachTree Customer Info, PeachTree Sales Order, 
+		Virtual Merchant</td>
+		<td>Exports all data from the Order Helper into the application.&nbsp; Same 
+		thing as <strong>&lt;= Virtual Merchant</strong>, <strong>&lt;= ACT!</strong>, 
+		or <strong>&lt;= PeachTree</strong>.</td>
+	</tr>
+	<tr>
+		<td><strong>Win+F</strong></td>
+		<td>Find Customer</td>
+		<td>ACT Customer Info</td>
+		<td>Find / lookup all users with the customer&#39;s last name</td>
+	</tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1>WIP</h1>
+<h3><a name="InternationalInstructions" href="#InternationalInstructions">International Customer Instructions</a></h3>
+<p>International Customers have a different Credit Card Validation method than 
+US or Canadian customers.&nbsp; If a customer&#39;s billing address is not in the 
+United States, here is the process...</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+</body>
+
+</html>

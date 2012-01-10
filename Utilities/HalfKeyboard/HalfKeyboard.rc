@@ -1,0 +1,27 @@
+
+1 VERSIONINFO
+FILEVERSION 1,0,0,0
+PRODUCTVERSION 1,0,0,0
+FILEOS 0x4
+FILETYPE 0x1
+{
+BLOCK "StringFileInfo"
+{
+	BLOCK "040904b0"
+	{
+		VALUE "FileDescription", "HalfKeyboard mirrors all keys on holding the Space-key to allow easy one-handed typing. (see http://www.halfkeyboard.com/)"
+		VALUE "FileVersion", "1, 0, 0, 0"
+		VALUE "InternalName", "HalfKeyboard"
+		VALUE "LegalCopyright", "Originally invented by Matias Corporation, first implemented in AutoHotkey by jonny, improved by mbirth"
+		VALUE "OriginalFilename", "HalfKeyboard.exe"
+		VALUE "ProductName", "HalfKeyboard"
+		VALUE "ProductVersion", "1, 0, 0, 0"
+	}
+}
+
+BLOCK "VarFileInfo"
+{
+	VALUE "Translation", 0x0409 0x04B0
+}
+}
+
