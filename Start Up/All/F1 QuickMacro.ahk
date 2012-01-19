@@ -883,19 +883,18 @@
 		; Get the MacroText:
 		GuiControlGet MacroText
 		
-		; Split the pattern at every word break:
+		; Split the pattern at every un-nested word break:
 		; RegexSplit:
 		lastPos = 1
 		pattern0 = 0
 		Loop
 		{
-			lastPos := RegexMatch(MacroText, "(\w+|.)", pattern%A_Index%, lastPos)
+			lastPos := RegexMatch(MacroText, "\w+|{[^}]*}|[^{]", pattern%A_Index%, lastPos)
 			If (!lastPos)
 				Break
 			pattern0++
 			lastPos += StrLen(pattern%A_Index%)
 		}
-		
 		If (pattern0 = 0) {
 			GuiControl, , MacroPattern, 
 			Return
