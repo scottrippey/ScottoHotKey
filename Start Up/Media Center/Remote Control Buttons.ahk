@@ -56,8 +56,9 @@
 #IfWinActive ahk_class eHome Render Window ; (Media Center)
 	!F4::
 		actions =
-		(ltrim
-			Switch=!{Esc}
+		(ltrim comments
+			;Switch=!{Esc}
+			Minimize:Minimize
 			Restore=!{Enter}
 			Close Media Center=!{F4}
 			Task Manager=^+{Esc}
